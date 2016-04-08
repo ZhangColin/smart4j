@@ -1,0 +1,11 @@
+/*use smart4j;*/
+
+CREATE TABLE smart4j.customers
+(
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) DEFAULT NULL ,
+  contact VARCHAR(255) DEFAULT NULL ,
+  telephone VARCHAR(255) DEFAULT NULL ,
+  email VARCHAR(255) DEFAULT NULL ,
+  remark TEXT
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
