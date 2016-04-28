@@ -1,18 +1,21 @@
 package org.smart4j.chapter2.test;
 
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.smart4j.chapter2.helper.DatabaseHelper;
 import org.smart4j.chapter2.model.Customer;
 import org.smart4j.chapter2.service.CustomerService;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Administrator on 2016/4/7.
- */
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+
 public class CustomerServiceTest {
     private final CustomerService customerService;
 
@@ -22,14 +25,14 @@ public class CustomerServiceTest {
 
     @Before
     public void init(){
-
+        DatabaseHelper.executeSqlFile("sql/customer_init.sql");
     }
 
     @Test
     public void getCustomerListTest() throws Exception{
         List<Customer> customerList = customerService.getCustomerList();
 
-        Assert.assertEquals(2, customerList.size());
+        assertEquals(2, customerList.size());
     }
 
     @Test
@@ -37,7 +40,7 @@ public class CustomerServiceTest {
         long id = 1;
         Customer customer = customerService.getCustomer(id);
 
-        Assert.assertNotNull(customer);
+        assertNotNull(customer);
     }
 
     @Test
@@ -48,7 +51,7 @@ public class CustomerServiceTest {
         fieldMap.put("telephone", "13512345678");
 
         boolean result = customerService.createCustomer(fieldMap);
-        org.junit.Assert.assertTrue(result);
+        assertTrue(result);
     }
 
     @Test
@@ -58,13 +61,13 @@ public class CustomerServiceTest {
         fieldMap.put("contact", "Eric");
 
         boolean result = customerService.updateCustomer(id, fieldMap);
-        org.junit.Assert.assertTrue(result);
+        assertTrue(result);
     }
 
     @Test
     public void deleteCustomerTest() throws Exception{
         long id = 1;
         boolean result = customerService.deleteCustomer(id);
-        Assert.assertTrue(result);
+        assertTrue(result);
     }
 }
