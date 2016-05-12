@@ -13,4 +13,8 @@ public class StringUtil {
     public static boolean isNotEmpty(String str){
         return !isEmpty(str);
     }
+
+    public static String[] splitString(String str, String separator){
+        return StringUtils.splitByWholeSeparator(str, separator);
+    }
 }
