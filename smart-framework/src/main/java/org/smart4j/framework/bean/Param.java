@@ -3,9 +3,13 @@ package org.smart4j.framework.bean;
 import org.smart4j.framework.util.CastUtil;
 import org.smart4j.framework.util.CollectionUtil;
 
+import java.util.List;
 import java.util.Map;
 
 public class Param {
+    private List<FormParam> formParamList;
+    private List<FileParam> fileParamList;
+
     private Map<String, Object> paramMap;
 
     public Param(Map<String, Object> paramMap) {
